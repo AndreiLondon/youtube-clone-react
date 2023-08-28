@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const BASE_URL = 'https://youtube-v31.p.rapidapi.com';
 
-const BASE_URL = 'https://youtube-v311.p.rapidapi.com/activities/';
+const BASE_URL = 'https://youtube-v311.p.rapidapi.com';
 
 const options = {
 //   method: 'GET',
@@ -18,8 +18,7 @@ params: {
     maxResults: '50'
 },
   headers: {
-    'X-RapidAPI-Key': process.env. 
-    REACT_APP_REACT_API_KEY,
+    'X-RapidAPI-Key': process.env.REACT_APP_REACT_API_KEY,
     'X-RapidAPI-Host': 'youtube-v311.p.rapidapi.com'
   }
 };
