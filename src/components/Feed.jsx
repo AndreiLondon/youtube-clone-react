@@ -2,9 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+
+import { fetchFromAPI } from '../utils/fetchFromApi.js';
 import { Sidebar, Videos } from "./";
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [setVideos] = useState(null);
+
+
+
+  useEffect(() => {
+
+    setVideos(null);
+
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+    .then((data) => setVideos(data.items))
+  }, [selectedCategory]);
+
   return (
     <Stack sx={{
       flexDirection: {
@@ -13,7 +28,7 @@ const Feed = () => {
       }
     }}>
       <Box sx={{ height: { sx: 'auto', md: '92vh' }, borderRight: '1px solid #3d3d3d', px: { sx: 0, md: 2 } }}>
-        <Sidebar/>
+        <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
 
         <Typography className="copyright" variant="body2" sx={{ mt: 1.5, color: "#fff", }}>
           Copyright 2023 css21.co
